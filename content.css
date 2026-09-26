@@ -1,0 +1,21 @@
+/* D:\CBXeVan\content.css */
+/* Giao diện thanh cảnh báo Chu kỳ xe tải VAN cải tạo */
+
+#cbxevan-cycle-banner {
+  animation: cbxevanSlideDown 0.3s ease-out;
+}
+
+@keyframes cbxevanSlideDown {
+  from {
+    transform: translate(-50%, -20px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+#btn-close-cbxevan-banner:active {
+  transform: scale(0.96);
+}

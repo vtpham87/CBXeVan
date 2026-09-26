@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CBXeVan – TT 30/2026/TT-BXD</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <div class="popup-header">
+      <div class="header-title">
+        <span class="logo-icon">🚛</span>
+        <div>
+          <h2>CBXeVan</h2>
+          <small>Cảnh báo Chu kỳ Xe Tải VAN (FYJ)</small>
+        </div>
+      </div>
+      <span class="status-badge active">Đang chạy</span>
+    </div>
+
+    <!-- Thông tin xe phát hiện gần nhất -->
+    <div class="card" id="last-detected-card">
+      <div class="card-header">
+        <span>📋 Xe tải VAN phát hiện gần nhất</span>
+      </div>
+      <div class="card-body" id="last-detected-content">
+        <div class="empty-state">Chưa phát hiện xe tải VAN nào trên tab hiện tại.</div>
+      </div>
+    </div>
+
+    <!-- Công cụ tính chu kỳ nhanh -->
+    <div class="card">
+      <div class="card-header">
+        <span>⚡ Tra cứu chu kỳ nhanh theo TT 30</span>
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <label for="input-prod-year">Năm sản xuất:</label>
+          <input type="number" id="input-prod-year" placeholder="VD: 2008" min="1990" max="2035">
+        </div>
+        <div class="form-row">
+          <label for="input-inspect-year">Năm kiểm định:</label>
+          <input type="number" id="input-inspect-year" value="2026">
+        </div>
+        <button id="btn-quick-calc" class="btn btn-primary">Tính chu kỳ đề xuất</button>
+
+        <div id="quick-calc-result" class="calc-result" style="display: none;"></div>
+      </div>
+    </div>
+
+    <!-- Footer action -->
+    <div class="popup-footer">
+      <button id="btn-rescan-tab" class="btn btn-secondary">🔄 Quét lại tab này</button>
+      <div class="legal-cite">Căn cứ: Thông tư số 30/2026/TT-BXD</div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

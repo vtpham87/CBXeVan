@@ -1,0 +1,212 @@
+/* D:\CBXeVan\popup.css */
+/* Light Mode - Độ tương phản cao - Dễ đọc ngoài trời */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  width: 360px;
+  font-size: 13.5px;
+}
+
+.popup-container {
+  padding: 14px;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon {
+  font-size: 24px;
+}
+
+.header-title h2 {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0b5ed7;
+  line-height: 1.2;
+}
+
+.header-title small {
+  font-size: 11px;
+  color: #6c757d;
+  font-weight: 600;
+}
+
+.status-badge {
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.status-badge.active {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+}
+
+.card-header {
+  background-color: #f1f3f5;
+  padding: 7px 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #495057;
+  border-bottom: 1px solid #ced4da;
+}
+
+.card-body {
+  padding: 12px;
+}
+
+.empty-state {
+  color: #6c757d;
+  font-style: italic;
+  font-size: 12.5px;
+  text-align: center;
+  padding: 6px 0;
+}
+
+.detected-item {
+  line-height: 1.5;
+}
+
+.detected-plate {
+  font-size: 16px;
+  font-weight: 800;
+  color: #b02a37;
+}
+
+.cycle-badge {
+  display: inline-block;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 5px;
+  margin-top: 6px;
+  font-size: 14.5px;
+}
+
+.cycle-badge.danger {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+
+.cycle-badge.warning {
+  background-color: #e0a800;
+  color: #ffffff;
+}
+
+.cycle-badge.info {
+  background-color: #0d6efd;
+  color: #ffffff;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.form-row label {
+  font-weight: 600;
+  font-size: 13px;
+  color: #343a40;
+}
+
+.form-row input {
+  width: 120px;
+  padding: 5px 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.form-row input:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.25);
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 7px 12px;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+}
+
+.btn-secondary {
+  background-color: #e9ecef;
+  color: #495057;
+  border: 1px solid #ced4da;
+}
+
+.btn-secondary:hover {
+  background-color: #dee2e6;
+  color: #212529;
+}
+
+.calc-result {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+  border: 1px solid #ced4da;
+}
+
+.popup-footer {
+  margin-top: 6px;
+}
+
+.legal-cite {
+  text-align: center;
+  font-size: 11px;
+  color: #868e96;
+  margin-top: 8px;
+  font-weight: 600;
+}

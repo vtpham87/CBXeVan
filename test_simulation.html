@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Môi Trường Thử Nghiệm CBXeVan – FYJ</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f6f9;
+      color: #1a1a1a;
+      margin: 0;
+      padding: 24px;
+    }
+    .header-bar {
+      background: #0d6efd;
+      color: #fff;
+      padding: 16px 24px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-bar h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+    .case-selector {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .btn-case {
+      background: #ffffff;
+      border: 2px solid #0d6efd;
+      color: #0d6efd;
+      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .btn-case:hover, .btn-case.active {
+      background: #0d6efd;
+      color: #ffffff;
+    }
+    .preview-card {
+      background: #ffffff;
+      border: 1px solid #ced4da;
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .doc-title {
+      text-align: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: #0b5ed7;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-weight: 700;
+      font-size: 15px;
+      color: #333;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 4px;
+      margin-top: 16px;
+      margin-bottom: 12px;
+    }
+    .field-row {
+      display: flex;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .field-label {
+      width: 320px;
+      font-weight: 600;
+      color: #495057;
+    }
+    .field-value {
+      flex: 1;
+      font-weight: 700;
+      color: #212529;
+    }
+    .instructions {
+      background: #e7f1ff;
+      border-left: 4px solid #0d6efd;
+      padding: 14px 18px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  </style>
+  <link rel="stylesheet" href="content.css">
+</head>
+<body>
+
+  <div class="header-bar">
+    <div>
+      <h1>TRANG GIẢ LẬP KIỂM THỬ EXTENSION CBXEVAN (OFFLINE)</h1>
+      <small>Đơn vị phát triển: FYJ – Theo Thông tư 30/2026/TT-BXD</small>
+    </div>
+    <span style="background: #198754; color: #fff; padding: 5px 12px; border-radius: 4px; font-weight: bold; font-size: 13px;">
+      Mô phỏng GCN Điện Tử
+    </span>
+  </div>
+
+  <div class="instructions">
+    <strong>📋 Hướng dẫn thử nghiệm:</strong>
+    Bấm vào các nút ca thử nghiệm bên dưới để thay đổi thông số xe. Extension <code>CBXeVan</code> sẽ tự động phân tích và kích hoạt <strong>Floating Banner</strong> cảnh báo nổi lên đầu màn hình với chu kỳ tương ứng!
+  </div>
+
+  <div class="case-selector">
+    <button class="btn-case active" onclick="loadCase(1)">🚨 Ca 1: Hiace 2007 (Tuổi 19 ≥ 15 ➜ 03 THÁNG)</button>
+    <button class="btn-case" onclick="loadCase(2)">⚠️ Ca 2: Transit 2018 (Tuổi 8 > 5 ➜ 06 THÁNG)</button>
+    <button class="btn-case" onclick="loadCase(3)">ℹ️ Ca 3: Sprinter 2023 (Tuổi 3 ≤ 5 ➜ 12 THÁNG)</button>
+    <button class="btn-case" onclick="loadCase(4)">✅ Ca 4: Xe tải thường (Không hoán cải ➜ Không cảnh báo)</button>
+    <button class="btn-case" onclick="loadCase(5)">✅ Ca 5: Xe con 5 chỗ (Không phải tải VAN ➜ Không cảnh báo)</button>
+  </div>
+
+  <div class="preview-card" id="gcn-preview">
+    <!-- Nội dung mô phỏng GCN -->
+  </div>
+
+  <script src="cycle_advisor.js"></script>
+  <script>
+    const cases = {
+      1: {
+        plate: '15D-033.25T',
+        chassis: 'RL4RS12P379001636',
+        type: 'Ô tô tải VAN',
+        prodYear: '2007',
+        commercial: '[-]',
+        modified: '[x]',
+        date: '23/09/2026',
+        reportNo: '23181/26',
+        desc: 'Toyota Hiace 16 chỗ hoán cải sang ô tô tải VAN 3 chỗ'
+      },
+      2: {
+        plate: '15D-012.34',
+        chassis: 'VN123456789TRANSIT',
+        type: 'Ô tô tải VAN',
+        prodYear: '2018',
+        commercial: '[x]',
+        modified: '[x]',
+        date: '25/09/2026',
+        reportNo: '23390/26',
+        desc: 'Ford Transit hoán cải sang ô tô tải VAN 6 chỗ'
+      },
+      3: {
+        plate: '15D-009.99',
+        chassis: 'MB123456789SPRINT',
+        type: 'Ô tô tải VAN',
+        prodYear: '2023',
+        commercial: '[-]',
+        modified: '[x]',
+        date: '25/09/2026',
+        reportNo: '23405/26',
+        desc: 'Mercedes Sprinter hoán cải sang ô tô tải VAN 3 chỗ'
+      },
+      4: {
+        plate: '15C-123.45',
+        chassis: 'HD72T123456789012',
+        type: 'Ô tô tải (có mui)',
+        prodYear: '2007',
+        commercial: '[x]',
+        modified: '[-]',
+        date: '25/09/2026',
+        reportNo: '23410/26',
+        desc: 'Xe tải thùng thông thường nguyên bản'
+      },
+      5: {
+        plate: '15A-987.65T',
+        chassis: 'VIOS1234567890123',
+        type: 'Ô tô con',
+        prodYear: '2020',
+        commercial: '[-]',
+        modified: '[-]',
+        date: '25/09/2026',
+        reportNo: '23420/26',
+        desc: 'Xe con cá nhân 5 chỗ ngồi'
+      }
+    };
+
+    function renderGcn(c) {
+      const el = document.getElementById('gcn-preview');
+      el.innerHTML = `
+        <div class="doc-title">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div>
+        <div style="text-align: center; font-weight: 700; margin-bottom: 12px; color: #555;">
+          GIẤY CHỨNG NHẬN KIỂM ĐỊNH AN TOÀN KỸ THUẬT VÀ BẢO VỆ MÔI TRƯỜNG PHƯƠNG TIỆN GIAO THÔNG CƠ GIỚI ĐƯỜNG BỘ
+        </div>
+        <div style="text-align: center; font-size: 13px; color: #666; margin-bottom: 16px;">
+          Số GCN: 26KĐG/019604/1507D | Ghi chú ca: <b>${c.desc}</b>
+        </div>
+
+        <div class="section-title">1. Phương tiện (Vehicle)</div>
+        <div class="field-row"><div class="field-label">Biển đăng ký (Registration plate):</div><div class="field-value">${c.plate}</div></div>
+        <div class="field-row"><div class="field-label">Số khung (Chassis Nº):</div><div class="field-value">${c.chassis}</div></div>
+        <div class="field-row"><div class="field-label">Loại phương tiện (Vehicle type):</div><div class="field-value">${c.type}</div></div>
+        <div class="field-row"><div class="field-label">Năm sản xuất (Production year):</div><div class="field-value">${c.prodYear}</div></div>
+        <div class="field-row"><div class="field-label">Có kinh doanh vận tải (Commercial use):</div><div class="field-value">${c.commercial}</div></div>
+        <div class="field-row"><div class="field-label">Có cải tạo (Modification):</div><div class="field-value">${c.modified}</div></div>
+
+        <div class="section-title">2. Thông số kỹ thuật & Kiểm định (Technical specifications)</div>
+        <div class="field-row"><div class="field-label">Ngày KĐ (Inspection date):</div><div class="field-value">${c.date}</div></div>
+        <div class="field-row"><div class="field-label">Số phiếu KĐ (Inspection report Nº):</div><div class="field-value">${c.reportNo}</div></div>
+      `;
+
+      // Kích hoạt CycleAdvisor quét lại
+      if (typeof CycleAdvisor !== 'undefined') {
+        CycleAdvisor.scanAndAlert(document.body);
+      }
+    }
+
+    function loadCase(num) {
+      document.querySelectorAll('.btn-case').forEach((btn, idx) => {
+        btn.classList.toggle('active', (idx + 1) === num);
+      });
+      renderGcn(cases[num]);
+    }
+
+    // Khởi tạo ca 1
+    window.addEventListener('DOMContentLoaded', () => {
+      loadCase(1);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "CBXeVan – Cảnh báo Chu kỳ Xe Tải VAN Cải tạo",
+  "short_name": "CBXeVan",
+  "version": "1.0.0",
+  "description": "Tiện ích độc lập tự động phát hiện ô tô tải VAN cải tạo từ xe khách và đề xuất chu kỳ kiểm định chuẩn xác theo Thông tư số 30/2026/TT-BXD – Đơn vị phát triển: FYJ",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://quantrigcn.vr.org.vn/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "CBXeVan – Cảnh báo Chu kỳ Xe Tải VAN (TT 30/2026/TT-BXD)"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://quantrigcn.vr.org.vn/*"
+      ],
+      "js": [
+        "cycle_advisor.js",
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_end",
+      "all_frames": true,
+      "match_origin_as_fallback": true
+    }
+  ]
+}
